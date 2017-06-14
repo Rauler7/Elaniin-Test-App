@@ -47,9 +47,9 @@ class App extends React.Component {
     }
 
     return (
-      <tr>
+      <div>
         {content}
-      </tr>
+      </div>
     )
   }
 }
