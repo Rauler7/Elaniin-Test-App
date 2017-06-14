@@ -2,15 +2,19 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import {Navbar} from './Navbar';
+import Api from './Api';
 
 var ReactDOM = require('react-dom')
+
+const initialState = { loggedIn: false };
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      initialState: true,
       data: '',
-      loading: true
+      loading: true      
     };
   }
   
@@ -30,6 +34,13 @@ class App extends React.Component {
       });
 
   }
+
+   onClickNavBar () {
+    const self = this
+    return this.state.loggedIn
+    ? () => { self.setState(initialState); self.api.logout() }
+    : this.api.login.bind(this.api)
+  }
   
   render () {
     let content;
@@ -39,7 +50,7 @@ class App extends React.Component {
     } else {      
       content = this.state.data.map((snacks, index) => {
         return (        
-          <tr key={index}>           
+          <tr className="flex" key={index}>           
             <td className="first-size">{snacks.name}</td>
             <td className="second-size">{snacks.price}</td>
             <td className="third-size">{snacks.stock}</td>              
@@ -49,9 +60,11 @@ class App extends React.Component {
     }
 
     return (
+    
       <div>
         {content}
       </div>
+    
     )
   }
 }

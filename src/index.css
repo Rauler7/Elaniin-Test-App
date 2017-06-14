@@ -60,18 +60,21 @@ body {
 }
 
 .first-size{
-  width: 40%;
+  width: 33.33%;
 }
 .second-size{
-  width: 40%;
+  width: 33.33%;
 }
 .third-size{
-  width: 20%;
+  width: 33.33%;
 } 
 
 #myTable tbody, thead {
   overflow: auto;
   width: 100%;
+}
+thead {
+  display: flex;
 }
 
 #myTable tbody div {
@@ -87,4 +90,8 @@ body {
 #myTable tr.header, #myTable tr:hover {
     /* Add a grey background color to the table header and on hover */
     background-color: #f1f1f1;
+}
+
+.flex {
+  display: flex;
 }
